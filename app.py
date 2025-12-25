@@ -259,17 +259,21 @@ def main():
         The system uses AI to understand your case context and automatically suggests 
         the most relevant policies, procedures, and regulations.
         """)
-         uploaded_files = st.file_uploader(
-        "Upload documents (PDF or DOCX)",
-        type=["pdf", "docx"],
-        accept_multiple_files=True
-        )
-        if uploaded_files:
-        st.success(f"{len(uploaded_files)} files uploaded")
-
-
+          import streamlit as st
+            st.set_page_config(
+                page_title="Intelligent Knowledge Retrieval System",
+                layout="wide"
+            )
+            st.title("📚 Intelligent Knowledge Retrieval System")
+            uploaded_files = st.file_uploader(
+                "Upload documents (PDF or DOCX)",
+                type=["pdf", "docx"],
+                accept_multiple_files=True
+)
+        
 if __name__ == "__main__":
     main()
+
 
 
 
