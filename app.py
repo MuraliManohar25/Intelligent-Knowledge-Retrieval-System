@@ -41,10 +41,31 @@ def initialize_system():
     try:
         db_client = ChromaDBClient(CHROMA_DB_DIR, COLLECTION_NAME)
         embedder = DocumentEmbedder(EMBEDDING_MODEL)
+        
+        # Check if database is empty and run ingestion
+        stats = db_client.get_collection_stats()
+        if stats["document_count"] == 0:
+            st.info("🔄 First-time setup: Indexing documents...")
+            from src.ingest.document_loader import DocumentLoader
+            from src.ingest.chunker import TextChunker
+            from config import DOCUMENTS_DIR, CHUNK_SIZE, CHUNK_OVERLAP
+            
+            loader = DocumentLoader(DOCUMENTS_DIR)
+            documents = loader.load_all_documents()
+            
+            if documents:
+                chunker = TextChunker(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
+                chunks = chunker.chunk_all_documents(documents)
+                embedded_chunks = embedder.embed_chunks(chunks)
+                db_client.add_documents(embedded_chunks)
+                st.success(f"✅ Successfully indexed {len(embedded_chunks)} chunks from {len(documents)} documents!")
+            else:
+                st.warning("⚠️ No documents found in DOCUMENTS_DIR. Please upload documents.")
+        
         engine = RetrievalEngine(db_client, embedder)
         return engine, db_client
     except Exception as e:
-        st.error(f"Error initializing system: {e}")
+        st.error(f"❌ Error initializing system: {e}")
         return None, None
 
 def load_mock_cases():
@@ -83,7 +104,7 @@ def main():
 
     stats = db_client.get_collection_stats()
     if stats["document_count"] == 0:
-        st.warning("No documents indexed. Run `python main.py` first.")
+        st.warning("No documents indexed. Please upload documents or ensure DOCUMENTS_DIR contains files.")
         return
 
     with st.sidebar:
