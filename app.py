@@ -260,15 +260,16 @@ def main():
         the most relevant policies, procedures, and regulations.
         """)
          uploaded_files = st.file_uploader(
-    "Upload documents (PDF or DOCX)",
-    type=["pdf", "docx"],
-    accept_multiple_files=True
-)
-if uploaded_files:
-    st.success(f"{len(uploaded_files)} files uploaded")
+        "Upload documents (PDF or DOCX)",
+        type=["pdf", "docx"],
+        accept_multiple_files=True
+        )
+        if uploaded_files:
+        st.success(f"{len(uploaded_files)} files uploaded")
 
 
 if __name__ == "__main__":
     main()
+
 
 
