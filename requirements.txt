@@ -1,0 +1,14 @@
+setuptools>=68.0.0
+wheel
+chromadb>=0.4.22
+sentence-transformers>=2.2.2
+streamlit>=1.31.0
+PyPDF2>=3.0.1
+python-docx>=1.1.0
+langchain>=0.1.0
+langchain-community>=0.0.13
+fastapi>=0.109.0
+uvicorn>=0.27.0
+python-multipart>=0.0.6
+# Install numpy and pandas separately with --only-binary flag to avoid building from source
+

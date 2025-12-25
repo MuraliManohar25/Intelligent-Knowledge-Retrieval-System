@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "case_id": "CLM-2024-00123",
+      "claim_type": "Flood",
+      "state": "Florida",
+      "property_type": "Residential",
+      "claim_amount": 50000,
+      "date_filed": "2024-03-15",
+      "description": "Residential property flood damage in Florida"
+    },
+    {
+      "case_id": "CLM-2024-00124",
+      "claim_type": "Fire",
+      "state": "Texas",
+      "property_type": "Commercial",
+      "claim_amount": 150000,
+      "date_filed": "2024-03-20",
+      "description": "Commercial building fire damage in Texas"
+    },
+    {
+      "case_id": "CLM-2024-00125",
+      "claim_type": "Hurricane",
+      "state": "Florida",
+      "property_type": "Residential",
+      "claim_amount": 85000,
+      "date_filed": "2024-04-10",
+      "description": "Hurricane damage to residential property in Florida"
+    },
+    {
+      "case_id": "CLM-2024-00126",
+      "claim_type": "Theft",
+      "state": "California",
+      "property_type": "Residential",
+      "claim_amount": 25000,
+      "date_filed": "2024-04-15",
+      "description": "Theft claim for residential property in California"
+    },
+    {
+      "case_id": "CLM-2024-00127",
+      "claim_type": "Water Damage",
+      "state": "New York",
+      "property_type": "Commercial",
+      "claim_amount": 120000,
+      "date_filed": "2024-05-01",
+      "description": "Water damage to commercial property in New York"
+    }
+  ]
+}
+
